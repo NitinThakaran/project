@@ -1,0 +1,85 @@
+
+    (function () {
+        var s = document.createElement('script');
+        var p = "var i = document.createElement('img');\
+    i.setAttribute('alt', '');\
+    i.setAttribute('height', '1');\
+    i.setAttribute('width', '1');\
+    i.setAttribute('style', 'display: none;');\
+    i.setAttribute('src', 'https://cm.g.doubleclick.net/pixel?google_hm=Rr-DQWYxssmW-uh-ydUIVA&google_nid=sojern_adh');\
+    document.body.appendChild(i);\
+";
+
+        s.type = 'text/javascript';
+        s.async = true;
+        if (s.textContent) {
+            s.textContent = p;
+        } else {
+            s.text = p;
+        }
+        document.getElementsByTagName('head')[0].appendChild(s);
+    })();
+    
+    (function () {
+        var s = document.createElement('script');
+        var p = "var i = document.createElement('img');\
+    i.setAttribute('alt', '');\
+    i.setAttribute('height', '1');\
+    i.setAttribute('width', '1');\
+    i.setAttribute('style', 'display: none;');\
+    i.setAttribute('src', 'https://ad.doubleclick.net/ddm/activity/src=9868694;type=sales;cat=india0;qty=1;cost=0;u1=%257C%257Cgoagh%257CBambolim%252C%2BNorth%2BGoa%257Cundefined%257Cundefined%257CPROPERTY_WEBSITE%257Chttps%253A%252F%252Fwww.hyatt.com%252F;u16=PROPERTY_WEBSITE;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;npa=;ord=[OrderID]');\
+    document.body.appendChild(i);\
+    ";
+
+        s.type = 'text/javascript';
+        s.async = true;
+        if (s.textContent) {
+            s.textContent = p;
+        } else {
+            s.text = p;
+        }
+        document.getElementsByTagName('head')[0].appendChild(s);
+    })();
+    
+    (function () {
+        var s = document.createElement('script');
+        var p = "var i = document.createElement('img');\
+    i.setAttribute('alt', '');\
+    i.setAttribute('height', '1');\
+    i.setAttribute('width', '1');\
+    i.setAttribute('style', 'display: none;');\
+    i.setAttribute('src', 'https://ad.doubleclick.net/ddm/activity/src=4886625;type=sales;cat=hyatt00w;qty=1;cost=0;u1=%257C%257Cgoagh%257CBambolim%252C%2BNorth%2BGoa%257Cundefined%257Cundefined%257CPROPERTY_WEBSITE%257Chttps%253A%252F%252Fwww.hyatt.com%252F;u16=PROPERTY_WEBSITE;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;npa=;gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ord=[OrderID]');\
+    document.body.appendChild(i);\
+    ";
+
+        s.type = 'text/javascript';
+        s.async = true;
+        if (s.textContent) {
+            s.textContent = p;
+        } else {
+            s.text = p;
+        }
+        document.getElementsByTagName('head')[0].appendChild(s);
+    })();
+    
+    (function () {
+        var s = document.createElement('script');
+        var p = "var i = document.createElement('img');\
+    i.setAttribute('alt', '');\
+    i.setAttribute('height', '1');\
+    i.setAttribute('width', '1');\
+    i.setAttribute('style', 'display: none;');\
+    i.setAttribute('src', 'https://ad.doubleclick.net/ddm/activity/src=4886625;type=sales;cat=otb6yqt5;qty=1;cost=0;u1=%257C%257Cgoagh%257CBambolim%252C%2BNorth%2BGoa%257Cundefined%257Cundefined%257CPROPERTY_WEBSITE%257Chttps%253A%252F%252Fwww.hyatt.com%252F;u6=;u8=en-US;u16=PROPERTY_WEBSITE;ord=[OrderID]');\
+    document.body.appendChild(i);\
+    ";
+
+        s.type = 'text/javascript';
+        s.async = true;
+        if (s.textContent) {
+            s.textContent = p;
+        } else {
+            s.text = p;
+        }
+        document.getElementsByTagName('head')[0].appendChild(s);
+    })();
+    

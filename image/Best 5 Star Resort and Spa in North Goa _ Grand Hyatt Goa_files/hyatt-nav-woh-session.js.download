@@ -1,0 +1,202 @@
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+window.addEventListener('load', function (e) {
+  function updateForm(obj) {
+    document.querySelectorAll('.js-return-url').forEach(function (e) {
+      e.value = window.location.href;
+    });
+
+    if (obj.csrf) {
+      if ((document.querySelector('input[name="csrf"]') !== null) && (document.querySelector('input[name="csrf"]') !== undefined)) {
+          document.querySelector('input[name="csrf"]').value = obj.csrf;
+      } 
+    }
+  }
+
+  function showMyElem(elem) {
+    document.querySelectorAll(elem).forEach(function (element) {
+      element.style.display = 'block';
+    });
+  }
+
+  function hideMyElem(elem) {
+    document.querySelectorAll(elem).forEach(function (element) {
+      element.style.display = 'none';
+    });
+  }
+
+  function showMemberName(elem, obj) {
+    if (obj.middleName.length === 0) {
+      document.querySelector(elem).innerText = obj.prefix + ' ' + obj.firstName + ' ' + obj.lastName;
+    } else {
+      document.querySelector(elem).innerText = obj.prefix + ' ' + obj.firstName + ' ' + obj.middleName + ' ' + obj.lastName;
+    }
+  }
+
+  function getLocale() {
+    return document.querySelectorAll('.m-nav').forEach(function (e) {
+      return e.getAttribute('lang');
+    });
+  }
+
+  function updateSemiName(obj) {
+    if (obj.middleName.length === 0) {
+      document.querySelector('#top-right-displayname').setAttribute('data-displayname', obj.prefix + ' ' + obj.firstName + ' ' + obj.lastName);
+    } else {
+      document.querySelector('#top-right-displayname').setAttribute('data-displayname', obj.prefix + ' ' + obj.firstName + ' ' + obj.middleName + ' ' + obj.lastName);
+    }
+
+    document.querySelector('#top-right-displayname').setAttribute('data-isfullLogged', 'false');
+    document.querySelectorAll('.hnav-input-checkbox').forEach(function (e) {
+      e.querySelector('input').setAttribute('checked', 'checked');
+    });
+  }
+
+  function handleProfileData(obj) {
+    var accountNumber = obj.goldpassportId || obj.accountNumber; // put the CSRF token in the form
+
+    if (accountNumber) {
+      showMemberName('.js-member-name', obj);
+      document.querySelectorAll('.js-hide-header-signin-form-woh').forEach(function (e) {
+        e.style.display = 'none';
+      });
+      showMyElem('.js-hide-header-member-woh');
+
+      if (obj.tier === 'M') {
+        showMyElem('.js-hide-member');
+      } else if (obj.tier === 'V') {
+        showMyElem('.js-hide-discoverist');
+      } else if (obj.tier === 'E') {
+        showMyElem('.js-hide-explorist');
+      } else if (obj.tier === 'B') {
+        showMyElem('.js-hide-globalist');
+      } else if (obj.tier === 'L') {
+        showMyElem('.js-hide-lifetimeGlobalist');
+      } else if (obj.tier === 'C') {
+        showMyElem('.js-hide-courtesy');
+      } else if (obj.tier === 'G') {
+        showMyElem('.js-hide-gold-member');
+      } else if (obj.tier === 'P') {
+        showMyElem('.js-hide-platinum-member');
+      } else if (obj.tier === 'D') {
+        showMyElem('.js-hide-diamond-member');
+      } else {
+        showMyElem('.js-hide-member-desc');
+      }
+
+      document.querySelector('.js-member-number').innerText = accountNumber;
+      document.querySelector('#js-woh-points').innerText = obj.points;
+      document.querySelector('#js-woh-nights').innerText = obj.ytdNights;
+      document.querySelector('#js-woh-points-ytd').innerText = obj.ytdBasePoints;
+      document.querySelectorAll('[data-locator=member]').forEach(function (e) {
+        e.setAttribute('data-loggedin', 'true');
+      });
+      updateForm(obj);
+    } else if (obj.username) {
+      showMemberName('#js-member-name', obj);
+      showMyElem('.js-hide-header-partial');
+
+
+      if (obj.csrf) {
+          if ((document.querySelectorAll('.js-hide-join') !== null) && (document.querySelectorAll('.js-hide-join') !== undefined)) {
+              hideMyElem('.js-hide-join');
+          }
+      } // semi-login state when both csrf and username exist, then hide the join button.
+
+
+      updateForm(obj);
+      
+      if ((document.querySelector('.js-hide-header-signin input[name="username"]') !== null) && (document.querySelector('.js-hide-header-signin input[name="username"]') !== undefined)) {
+        document.querySelector('.js-hide-header-signin input[name="username"]').value = obj.username;
+      }
+
+      if ((document.querySelector('.js-hide-header-signin input[name="last_name"]') !== null) && (document.querySelector('.js-hide-header-signin input[name="last_name"]') !== undefined)) {
+        document.querySelector('.js-hide-header-signin input[name="last_name"]').value = obj.lastName;
+      }
+      
+      showMemberName('.js-insert-member-name > form > button > span', obj);
+      updateSemiName(obj);
+    } else if (obj.csrf) {
+      updateForm(obj);
+      showMyElem('.js-hide-header-signin');
+      if ((document.querySelectorAll('.js-hide-header-signin-help') !== null) && (document.querySelectorAll('.js-hide-header-signin-help') !== undefined)) {
+        document.querySelectorAll('.js-hide-header-signin-help').forEach(function (e) {
+          e.style.display = 'inline-block';
+        });
+      }
+    } else {
+      document.querySelectorAll('.js-hide-header-signin-form-woh').forEach(function (each) {
+        each.style.display = 'none';
+      });
+      showMyElem('.js-hide-header-unavailable-woh');
+      document.querySelectorAll('.js-hide-loading-indicator').forEach(function (e) {
+        e.style.display = 'none';
+      });
+      document.querySelectorAll('.js-hide-siginin-icon').forEach(function (e) {
+        e.style.display = 'inline-block';
+      });
+    }
+
+    document.querySelectorAll('.js-hide-loading-indicator').forEach(function (each) {
+      each.style.display = 'none';
+    });
+    document.querySelectorAll('.js-hide-siginin-icon').forEach(function (each) {
+      each.style.display = 'inline-block';
+    });
+  }
+
+  var WoH = window.WoH || {};
+
+  if (Object.keys(WoH).length) {
+    handleProfileData(WoH.AuthProfile);
+  } else {
+    var options = {};
+    options.url = document.querySelector('.hnav-signin').getAttribute('data-profile-href');
+    options.type = 'GET';
+    options.data = 'language=' + getLocale() + '&_=' + Date.now();
+    ajax(options);
+  }
+
+  function ajax(options) {
+    options = options || {};
+    options.type = (options.type || 'GET').toUpperCase();
+    options.dataType = options.dataType || 'json';
+    var params = options.data;
+    var xhr;
+
+    if (window.XMLHttpRequest) {
+      xhr = new XMLHttpRequest();
+    } else if (window.ActiveXObject) {
+      //IE and lower
+      xhr = new ActiveXObject('Microsoft.XMLHTTP');
+    }
+
+    if (options.type === 'GET') {
+      xhr.open('GET', options.url + '?' + params, true);
+      xhr.send();
+    } else if (options.type === 'POST') {
+      xhr.open('POST', options.url, true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.send(params);
+    }
+
+    xhr.onreadystatechange = function () {
+      var status = xhr.status;
+
+      if (xhr.readyState === 4) {
+        if (status >= 200 && status < 300 || status === 304) {
+          // options.success && options.success(xhr.responseText, xhr.responseXML);
+          var obj = (typeof data === "undefined" ? "undefined" : _typeof(data)) === 'object' ? data : eval('(' + xhr.responseText + ')');
+          handleProfileData(obj);
+        } else {
+          document.querySelector('.js-hide-header-signin-form-woh').style.display = 'none';
+          showMyElem('.js-hide-header-unavailable-woh');
+          document.querySelector('.js-hide-loading-indicator').style.display = 'none';
+          document.querySelectorAll('.js-hide-siginin-icon').forEach(function (e) {
+            e.style.display = 'inline-block';
+          });
+        }
+      }
+    };
+  }
+}, false);

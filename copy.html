@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+</head>
+<style>
+    body{
+        background: url("image/resort\ 23.jpg"); 
+        background-position: center;
+    background-size: auto;
+       background-repeat: no-repeat;
+}
+#form{
+    background-color: #000;
+    height:400px;
+    width:800px;
+    margin: auto;
+    margin-top: 100px;
+    opacity:0.7;
+}
+#first-group{
+    border:none;
+    width:400px;
+    margin-top: 38px;
+    position: absolute;
+}
+#content{
+    border: 1px solid #fff;
+    margin:10px;
+    margin-left: 8px;
+    padding:5px;
+}
+#content input, #content select{
+    border:none;
+    outline:none;
+    background: transparent;
+    margin-left:8px;
+    width:300px;
+    color:#fff;
+}
+::placeholder{
+    color:#fff;
+}
+.fa{
+    display:inline-block;
+    color:aqua;
+    border-right:1px solid #fff;
+    padding:8px;
+    margin-left: 8px;
+}
+#second-group{
+    border:none;
+    width:400px;
+    margin-top: 55px;
+    margin-left:400px;
+}
+#submit-btn{
+    margin-top: 30px;
+    margin-left: 328px;
+    background: transparent;
+    color:#fff;
+    width:150px;
+    border:1px solid aqua;
+    outline:none;
+    padding:10px;
+    font-size: 20px;
+    ;
+}
+</style>
+
+<body>
+    
+    <div class="container">
+        <form class="form-group" onsubmit="formSubmit()" action="/" method="post">
+            <div id="form">
+                <h1 class="text-white text-center">Booking Now</h1>
+
+                <div id="first-group">
+
+                    <div id="content">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <input type="text" id="fname" name="fname" placeholder="First name">
+                    </div>
+
+                    <div id="content">
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+                        <input type="text" id="phone" name="phone" placeholder="Phone number">
+                    </div>
+
+                    <div id="content">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        <input type="text" id="adate" name="adate" placeholder="Arrival Date">
+                    </div>
+
+                    <div id="content">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        <select id="members" name="nos" style="background-color: black;">
+                            <option value="">No.of guests</option>
+                            <option value="1-5">1-5</option>
+                            <option value="6-10">6-10</option>
+                            <option value="11-20">11-20</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div id="second-group">
+
+                    <div id="content">
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <input type="text" id="lname" name="lname" placeholder="Last name">
+                    </div>
+
+                    <div id="content">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        <input type="email" id="email" name="email" placeholder="Email">
+                    </div>
+
+                    <div id="content">
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        <input type="text" id="date" name="ddate" placeholder="Departure Date">
+                    </div>
+
+                    <div id="content">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        <select id="room" name="type" style="background-color: black;">
+                            <option value="Room Type">Room Type</option>
+                            <option value="AC">AC</option>
+                            <option value="Non-Ac">Non-AC</option>
+                            <option value="Single Bed">Single Bed</option>
+                            <option value="Double Bed">Double Bed</option>
+                        </select>
+                    </div>
+            
+                </div>
+
+                <button type="submit" value="Submit" id="submit-btn">Book Now</button>
+
+            </div>
+        </form>
+    </div>
+</body>
+<script>
+    function formSubmit(){
+        // event.preventDefault();
+        var first_name = document.getElementById("fname").value;
+        var last_name = document.getElementById("lname").value;
+        alert("Rooms booked for "+first_name+" "+last_name);
+    }
+</script>
+</html>
+

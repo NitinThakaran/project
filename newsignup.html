@@ -1,0 +1,135 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+  </head>
+  <style>
+      body, html{
+          height: 100%;
+          width: 100%;
+      }
+      .login-container{
+      margin-top: 5%;
+      margin-bottom: 5%;
+  }
+  .login-form-1{
+      padding: 5%;
+      box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+      background-color: white;
+  }
+  .login-form-1 h3{
+      text-align: center;
+      color: #333;
+  }
+  
+  .login-container form{
+      padding: 10%;
+  }
+  .btnSubmit
+  {
+      width: 50%;
+      border-radius: 1rem;
+      padding: 1.5%;
+      border: none;
+      cursor: pointer;
+     
+  }
+  .login-form-1 .btnSubmit{
+      font-weight: 600;
+      color: #fff;
+      background-color: #0062cc;
+      margin-left: 25%;
+  }
+  
+  .login-form-1 .ForgetPwd{
+      color: #0062cc;
+      font-weight: 600;
+      text-decoration: none;
+  }
+  .main-container{
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      background-color: #2D3047;
+  }
+  .welcome-image{
+      display: block;
+      max-width: 100%;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  .sidenav{
+      height: 100%;
+      background-color: #2D3047;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      z-index: 1;
+      top: 0;
+      left: 0;
+  
+  }
+  .container.login-container{
+      margin-top: auto;
+      margin-bottom: auto;
+      padding: auto;
+      /* max-width: 463px; */
+      display: flex;
+      justify-content: center;
+      
+  }
+  
+  </style>
+  <body>
+  <div class="main-container">
+      <div class="sidenav">
+          <div class="login-image">
+              <img src="image/c2.png" alt="" class="welcome-img">
+          </div>
+      </div>
+      <div class="container login-container">
+              
+        <div class="col-md-6 login-form-1">
+            <h3>Register</h3>
+            <form id="register-form">
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="First Name *" id="first_name" required />
+              </div>
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="Last Name" id="last_name" required />
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Your Email *" id="email_reg" required />
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" placeholder="Your Password *" id="pass_reg" required />
+              </div>
+              <div class="form-group form-btn-group">
+                <input type="submit" class="btnSubmit Register-btn" value="Register" />
+              </div>
+              <div class="form-group">
+                  <h5>Already have an account?</h5>
+                  <button type="button" class="btnSubmit"><a href="newform.html">login</a></button>
+              </div>
+              <div class="form-group form-links">
+                <p>Skip to <a href="corona.html" class="ForgetPwd">Dashboard</a></p>
+              </div>
+            </form>
+          </div>
+        
+      </div>
+  </div>
+      
+  </body>
+  </html>

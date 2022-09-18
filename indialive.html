@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid Cases In India</title>
+</head>
+<style>
+	 nav {
+display: flex;
+padding: 0 23px;
+background-color: black;
+position: fixed;
+width: 100%;
+top: 0;
+left: 0;
+}
+
+.item {
+padding: 3px 8px;
+list-style: none;
+}
+.item a {
+            color: white;
+            text-decoration: none;
+            padding: 18px 10px;
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+             
+        }
+body {
+background-image: url("image/mg.jpg");
+}
+
+#Covid-S,th,td{
+    margin-left: 350px;
+    text-align: left;
+    color:rgb(219, 255, 57);
+    font-size: 1.2rem;
+    border: 1px solid white;
+}
+h1{
+    text-align: center;
+    color: whitesmoke;
+	margin-top: 80px;
+
+}
+.right {
+    position: fixed;
+        right: 165px;
+         top: 20px;
+        display: inline-block;
+        z-index: 100;
+        
+    }
+        .right1 {
+    position: fixed;
+        right: 45px;
+         top: 20px;
+        display: inline-block;
+        z-index: 100;
+        
+    }
+    .btn {
+        font-family:Arial, Helvetica, sans-serif;
+        margin: 0px 9px;
+        background-color: peachpuff;
+        color:black;
+        padding: 4px 14px;
+        border: 2px solid white ;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+</style>
+<body>
+	<nav>
+        <li class="item" id="home-19"><a href="#">Home</a></li>
+        
+        <li class="item" id="india-19"><a href="#">Indialive</a></li>
+        <li class="item" id="global-19"><a href="#">Global</a></li>
+
+        </nav>
+		<section>
+			<div class="right">
+				<button class="btn" id="book_btn"> Login </button>
+				
+			</div>
+		</section>
+		<section>
+			<div class="right1">
+				<button class="btn" id="book_btn1"> Sign up</button>
+				
+			</div>
+    <body>
+        <!-- Here a loader is created which 
+             loads till response comes -->
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" 
+                 role="status" id="loading">
+                <span class="sr-only">Covid-19 India</span>
+            </div>
+        </div>
+        <h1> Indian Covid Summary</h1>
+        <!-- table for showing data -->
+        <table id="Covid-S"></table>
+    </body>
+    <Script>
+        // api url
+const api_url =
+	"https://api.covid19india.org./data.json";
+
+// Defining async function
+async function getapi(url) {
+	
+	// Storing response
+	const response = await fetch(url);
+	
+	// Storing data in form of JSON
+	var data = await response.json();
+	console.log(data);
+	if (response) {
+		hideloader();
+	}
+	show(data);
+}
+// Calling that async function
+getapi(api_url);
+
+// Function to hide the loader
+function hideloader() {
+	document.getElementById('loading').style.display = 'none';
+}
+// Function to define innerHTML for HTML table
+function show(data) {
+	let tab =
+		`<tr>
+		<th>state</th>
+		<th>active</th>
+		<th>confirmed</th>
+		<th>recovered</th>
+		<th>deaths</th>
+		<th>lastupdatedtime</th>
+		<th></th>
+		</tr>`;
+	
+	// Loop to access all rows
+	for (let r of data.statewise) {
+		tab += `<tr>
+	<td>${r.state} </td>
+	<td>${r.active}</td>
+	<td>${r.confirmed}</td>
+	<td>${r.recovered}</td>		
+	<td>${r.deaths}</td>				
+	<td>${r.lastupdatedtime}</td>		
+		
+</tr>`;
+	}
+	// Setting innerHTML as tab variable
+	document.getElementById("Covid-S").innerHTML = tab;
+}
+
+    </Script>
+	 <script>
+		document.getElementById("home-19").addEventListener("click", myFunction);
+		
+		function myFunction(){
+				window.location.href="corona.html";
+			}
+	</script>
+	 <script>
+		document.getElementById("book_btn").addEventListener("click", myFunction);
+		
+		function myFunction(){
+				window.location.href="newform.html";
+			}
+	</script>
+	<script>
+		document.getElementById("book_btn1").addEventListener("click", myFunction);
+		
+		function myFunction(){
+				window.location.href="newsignup.html";
+			}
+	</script>
+	<script>
+		document.getElementById("global-19").addEventListener("click", myFunction);
+		
+		function myFunction(){
+				window.location.href="global.html";
+			}
+	</script>
+    
+</body>
+</html>

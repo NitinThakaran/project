@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    #navbar{
+        position: fixed;
+        display: flex;
+        align-items: center;
+        background-color: gray;
+        width: 100%;
+        top:0;
+        z-index: 100;
+        
+    }
+    #logo{
+        margin: 17px 20px;
+        
+    }
+    #logo img{
+        width: 104px;
+        height: 104px;
+    }
+   
+    #navbar ul{
+        display: flex;
+       
+        
+    }
+    
+      
+
+     #navbar ul li{
+         list-style: none;
+         font-size: 0.9rem;
+         
+
+         
+     }
+     
+     #navbar ul li a{
+         color: white ; 
+         display: block;
+         padding: 5px 10px;
+         border-radius: 20px;
+         text-decoration: none;
+     }
+     #navbar ul li a:hover,#navbar ul li a:visited{
+         color:whitesmoke;
+         background-color: black;
+         text-decoration: underline;
+     }
+     .top{
+         top: 300px;
+     }
+    #roll{
+        background: url("image/tree.webp"); 
+         background-size: 100% 600px;
+         height: 600px;
+         width: 100%;
+         background-repeat: no-repeat;
+    }
+    .cane{
+        top: 30px;
+        
+    }
+    .cane h1{
+        text-align: center;
+        color: red;
+    } 
+    .cane p{
+        text-align: center;
+        font-size: 1.2rem;
+        
+    }
+    .room-text{
+    text-align: center;
+    width: 750px;
+    margin: auto;
+    vertical-align: middle;
+    font-size: 1.2rem;
+    font-weight: 40px;
+    padding-top: 20px;
+}
+.temp h1{
+    text-align: center;
+    color: red;
+}
+.temp p{
+        text-align: center;
+        font-size: 1.2rem;
+        
+    } 
+    .container1{
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+    .container2{
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+    .container3{
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+    }
+    .subsection{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.center{
+    /* color: red; */
+    margin: auto;
+    top: 50%;
+    text-align: center;
+}
+.center h2{
+    color: red;
+}
+
+.row{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.content{
+    margin-top: 142px;
+}
+.right {
+    position: fixed;
+        right: 45px;
+         top: 50px;
+        display: inline-block;
+        z-index: 100;
+        
+    }
+    .btn {
+        font-family:Arial, Helvetica, sans-serif;
+        margin: 0px 9px;
+        background-color:white;
+        color: red;
+        padding: 4px 14px;
+        border: 2px solid black ;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+footer {
+    background-color:black;
+    overflow: hidden;
+    width: 100%;
+}
+
+.foot{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.foot-sep{
+    height:30px;
+    width: 2px;
+    background-color: gray;
+    margin-top: 13px;
+    /* margin-left: 20px;
+    margin-right: 20px; */
+}
+
+footer a {
+    
+    text-decoration: none;
+    padding: 20px;
+    text-align: center;
+    float: left;
+    color: gray;
+
+}
+footer a:hover {
+    
+    text-decoration: underline;
+    color:whitesmoke;
+
+}
+
+</style>
+<body>
+    <nav id="navbar">
+        <div id="logo">
+            <img src="image/watergate.png" alt="">
+        </div>
+        <ul>
+            <li><a href="#hotel" id="hotels"> HOTEL </a></li>
+            <li><a href="#ROOMS" id="rooms"> ROOMS </a></li>
+            <li><a href="#din" id="din_din"> DINING </a></li>
+            <li><a href="#events" id=" events"> SPECIAL EVENTS </a></li>
+            <li><a href="#run" id="run_run"> PHOTOS + REVIEWS </a></li>
+            <li><a href="" id="offers"> OFFERS</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+    <section id="roll">
+
+    </section>
+    <br>
+    <br>
+    <br>
+    <div class="cane">
+        <h1>
+            SPECIAL EVENTS
+        </h1>
+        <BR>
+        <P class="room-text">
+            Grand Hyatt Goa is Goa’s largest and most sophisticated luxury conference and wedding resort, bringing the ultimate event experience to the dynamic meeting and weddings scene, with an overall banquet facility of over 3500 sq m
+        </P>
+        <div class="row">
+        <div class="column">
+            <p>
+                Total sleepng Rooms 
+            </p>
+            
+            <p>
+                313
+            </p>
+        </div>
+        <div class="column">
+            <p>
+                largest space
+            </p>
+            <p>
+                12400 sq ft
+            </p>
+        </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="temp">
+        <h1>
+            Spaces
+        </h1>
+        <br>
+        <p class="room-text">
+            The Grand Hyatt brand has long enjoyed a well-earned reputation for excellence in the field of banqueting and catering. A professional and attentive team oversees many successful events to ensure that catering and conference needs are met to the client's satisfaction. To further enhance its position as a leading conference venue, a dedicated events team has been established who provide and maintain the highest standards of excellence and personalised service for our delegates and organisers.
+        </p>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="container1">
+        <div class="shift">
+            <img src="image/ballroom.webp" alt="" width="500px" height="330px" >
+            <p>
+              Grand ballroom
+            </p>
+        </div>
+          <div class="right1">
+              <img src="image/salao.webp" alt=""width="500px" height="330px" >
+              <p>
+                  Salao 1,2 and 3
+              </p>
+          </div>
+          </div>
+          <br>
+    <div class="container2">
+        <div class="tilt">
+            <img src="image/salao1.webp" alt="" width="500px" height="330px" >
+            <p>
+             Salao 4 and 5
+            </p>
+        </div>
+          <div class="left">
+              <img src="image/lawn1.webp" alt=""width="500px" height="330px" >
+              <p>
+                 Lawns
+              </p>
+          </div>
+          </div>
+          <br>
+    <div class="container3">
+        <div class="over">
+            <img src="image/atrium1.webp" alt="" width="500px" height="330px" >
+            <p>
+             Atrium
+            </p>
+        </div>
+          <div class="back">
+              <img src="image/jharoka1.webp" alt=""width="500px" height="330px" >
+              <p>
+                  Jharoka
+              </p>
+          </div>
+    </div>
+    <div class="special subsection">
+        <div class="center">
+        <h2> WEDDINGS </h2>
+      <p class="room-text">
+        We offer some of the most unique wedding settings in Goa. Whichever way you look at it, the Grand Hyatt Goa spellsromance, whether it’s within the precincts of the majestic  17th century Indo-Portuguese palace or on the waterfront.  Celebrate your love with the ultimate romantic beach  wedding. Sip champagne as the sun sets over the sparkling  ocean. And, after the rites of passage, slip away with your  beloved for some barefoot-on-the sands time together 
+      </p>
+        </div>
+      <img src="image/wed.webp" alt="" height="350px" width="650px" style="margin-bottom: 5px;"  >  
+        
+    </div>
+    <div class="special subsection">
+        
+      <img src="image/meetings1.webp" alt="" height="350px" width="650px"  >  
+      <div class="center">
+        <h2> MEETINGS </h2>
+      <p class="room-text">
+        Grand Hyatt Goa is Goa’s largest and most sophisticated luxury conference and wedding resort, bringing the ultimate event experience to the dynamic meeting and weddings scene, with an overall banquet facility of over 3500 sq m.
+        The versatile function rooms are located across two floors. The elegant Grand Ballroom and six functions rooms are on the ground level with a pre-function area ideally equipped to hold receptions. The lobby level also houses two meeting rooms and two board rooms.
+      </p>
+        </div>
+    </div>
+    <div class="special subsection">
+          
+        <div class="center">
+          <h2> CATERING </h2>
+        <p class="room-text">
+            With over 2,780 sq m (30,000 sq ft of meeting space), Grand Hyatt Goa is set to take its place as Goa’s largest banquet spaces and most preferred luxury conference and wedding hotel. From corporate meetings to indulgent incentive breaks to weddings on a grand scale, with cuisine to match.
+        </p>
+        </div>
+        <img src="image/catering1.webp" alt="" height="350px" width="650px" style="margin-bottom: 5px;" >
+      </div>
+      <section>
+        <div class="right">
+            <button class="btn" id="book_btn">Book Now </button>
+            
+        </div>
+    </section>
+    <footer class="foot">
+        <a href="#">FAQ</a><div class="foot-sep"></div>
+        <a href="#">Contact Us</a><div class="foot-sep"></div>
+        <a href="#">Modify / Cancel Reservation</a><div class="foot-sep"></div>
+        <a href="#">Privacy Policy</a><div class="foot-sep"></div>
+        <a href="#">Customer Service</a>
+        
+    </footer>
+    </div>
+    <script>
+        document.getElementById("book_btn").addEventListener("click", myFunction);
+        
+        function myFunction(){
+                window.location.href="copy.html";
+            }
+    </script>
+    <script>
+        document.getElementById("din_din").addEventListener("click", myFunction);
+        
+        function myFunction(){
+                window.location.href="dining.html";
+            }
+    </script>
+    <script>
+        document.getElementById("run_run").addEventListener("click", myFunction);
+        
+        function myFunction(){
+                window.location.href="photos.html";
+            }
+    </script>
+    <script>
+       document.getElementById("events").addEventListener("click", myFunction);
+        
+        function myFunction(){
+                window.location.href="project3.html";
+            }
+    </script>
+    <script>
+       document.getElementById("hotels").addEventListener("click", myFunction);
+        
+        function myFunction(){
+                window.location.href="project2.html";
+            }
+    </script>
+    <script>
+        document.getElementById("rooms").addEventListener("click", myFunction);
+         
+         function myFunction(){
+                 window.location.href="rooms.html";
+             }
+     </script>
+     <script>
+        document.getElementById("offers").addEventListener("click", myFunction);
+         
+         function myFunction(){
+                 window.location.href="offers.html";
+             }
+     </script>
+     
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+        
+    
+    
+</body>
+</html>

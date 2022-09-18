@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+      <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <style>
+    #navbar{
+        position: fixed;
+        display: flex;
+        align-items: center;
+        background-color: gray;
+        width: 100%;
+        top:0;
+        z-index: 100;
+        
+    }
+    #logo{
+        margin: 17px 20px;
+        
+    }
+    #logo img{
+        width: 104px;
+        height: 104px;
+    }
+   
+    #navbar ul{
+        display: flex;
+       
+        
+    }
+    
+      
+
+     #navbar ul li{
+         list-style: none;
+         font-size: 0.9rem;
+         
+
+         
+     }
+     
+     #navbar ul li a{
+         color: white ; 
+         display: block;
+         padding: 5px 10px;
+         border-radius: 20px;
+         text-decoration: none;
+     }
+     #navbar ul li a:hover,#navbar ul li a:visited{
+         color:whitesmoke;
+         background-color: black;
+         text-decoration: underline;
+     }
+     .top{
+       margin-top: 142px;
+     }
+    .box1{
+         background: url("image/photos1.webp"); 
+         background-size: 100% 550px;
+         height: 550px;
+         width: 100%;
+         background-repeat: no-repeat;
+  } 
+    
+
+    .heads{
+    text-align: center;
+    color: red;
+  
+  }
+  .p2{
+    text-align: center;
+    font-size: 1.2rem;
+  
+  
+  }
+  .right {
+    position: fixed;
+        right: 45px;
+         top: 50px;
+        display: inline-block;
+        z-index: 100;
+        
+    }
+    .btn {
+        font-family:Arial, Helvetica, sans-serif;
+        margin: 0px 9px;
+        background-color:white;
+        color: red;
+        padding: 4px 14px;
+        border: 2px solid black ;
+        font-size: 20px;
+        cursor: pointer;
+    }
+footer {
+    background-color:black;
+    overflow: hidden;
+    width: 100%;
+}
+
+.foot{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.foot-sep{
+    height:30px;
+    width: 2px;
+    background-color: gray;
+    margin-top: 13px;
+    /* margin-left: 20px;
+    margin-right: 20px; */
+}
+
+footer a {
+    
+    text-decoration: none;
+    padding: 20px;
+    text-align: center;
+    float: left;
+    color: gray;
+
+}
+footer a:hover {
+    
+    text-decoration: underline;
+    color:whitesmoke;
+
+}
+  .h2{
+    text-align: center;
+  
+  }
+  .rock{
+    top: 50px;
+    width: 100%;
+    align-content: center;
+  }
+  .rock h2{
+    text-align: center;
+    margin: auto;
+    padding: 15px;
+  }
+  .py{
+    text-align: center;
+    margin: auto;
+  }
+  .center{
+    margin: auto;
+  }
+
+
+  </style>
+  <body>
+    <nav id="navbar">
+      <div id="logo">
+          <img src="image/watergate.png" alt="">
+      </div>
+      <ul>
+          <li><a href="#hotel" id="hotels"> HOTEL </a></li>
+          <li><a href="#ROOMS" id="rooms"> ROOMS </a></li>
+          <li><a href="#din" id="din_din"> DINING </a></li>
+          <li><a href="#events" id="enents"> SPECIAL EVENTS </a></li>
+          <li><a href="#run" id="run_run"> PHOTOS + REVIEWS </a></li>
+          <li><a href="#" id="offers"> OFFERS</a></li>
+      </ul>
+  </nav>
+  <div class="top">
+
+    <div class="box1">
+      
+      </div>
+      <h1 class="heads">Photos + Reviews</h1>
+      <p class="p2"> Consider this your new travel guide. Here’s a look at how our guests experience life.</p>
+      <div class="rock">
+        <h2>Hotel</h2>
+        <table class="center">
+          <tr>
+            <td> <img src="image/photo2.webp" alt="photo" width="400" height="250"> </td>
+            <td><img src="image/photo3.webp" alt="photo" width="400" height="250"> </td>
+            <td><img src="image/photo4.webp" alt="photo" width="400" height="250"> </td>
+          </tr>
+          <tr>
+            <td  class="py"> <p>capiz fire place </p> </td>
+            <td class="py"> <p>The Verandah- Authentic Italian Restaurant</p> </td>
+            <td class="py"><p>Capiz Bar </p> </td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="rock">
+        <table  class="center">
+          <tr>
+            <td> <img src="image/photo5.webp" alt="photo"  width="400" height="250"> </td>
+            <td><img src="image/photo6.webp" alt="photo" width="400" height="250"> </td>
+            <td><img src="image/photo7.webp" alt="photo" width="400" height="250"> </td>
+          </tr>
+          <tr>
+            <td  class="py"> <p>Chulha- Home style Indian Restaurant </p> </td>
+            <td class="py"> <p> The Dining Room</p> </td>
+            <td class="py"><p> Confeitaria- Coffee Bar</p> </td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="rock">
+
+        <h2>Suites</h2>
+        <table  class="center">
+          <tr>
+            <td> <img src="image/photo8.webp" alt="photo"  width="400" height="250"> </td>
+            <td><img src="image/photo9.webp" alt="photo" width="400" height="250"> </td>
+            <td><img src="image/photo10.webp" alt="photo" width="400" height="250"> </td>
+
+          </tr>
+          <tr>
+            <td  class="py"> <p>Presidential Suite </p> </td>
+            <td class="py"> <p> Club View Twin </p> </td>
+            <td class="py"><p> Room View </p> </td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="rock">
+        <h2> Spa</h2>
+        <table  class="center">
+          <tr>
+             <td><img src="image/spa1.webp" alt="spa" width="600" height="250"> </td>
+             <td><img src="image/spa2.webp" alt="" width="600" height="250"> </td>
+          </tr>
+          <tr>
+            <td  class="py"> <p>Shamana Spa </p> </td>
+            <td class="py"> <p> Shamana Spa</p> </td>
+          </tr>
+        </table>
+      </div>
+      <div class="rock">
+        <h2>Activites</h2>
+        <table  class="center">
+          <tr>
+            <td><img src="image/act1.webp" alt="" width="400" height="250"> </td>
+            <td> <img src="image/act22.webp" alt="" width="400" height="250"> </td>
+            <td><img src="image/act3.webp" alt="" width="400" height="250"> </td>
+          </tr>
+          <tr>
+            <td  class="py"> <p> Adventure Park</p> </td>
+            <td class="py"> <p>Outdoor yoga </p> </td>
+            <td class="py"><p>Aqua Zorbing</p> </td>
+          </tr>
+        </table>
+      </div>
+      <div class="rock">
+        <h2>Destination</h2>
+        <table  class="center">
+          <tr>
+            <td><img src="image/dest1.webp" alt="" width="400" height="250"> </td>
+            <td><img src="image/dest2.webp" alt="" width="400" height="250"> </td>
+            <td> <img src="image/dest3.webp" alt="" width="400" height="250"> </td>
+          </tr>
+          <tr>
+            <td  class="py"> <p>Outdoor pool </p> </td>
+            <td class="py"> <p>OutDoor Longue </p> </td>
+            <td class="py"><p>OutDoor Lawn</p> </td>
+          </tr>
+        </table>
+
+
+      </div>
+      <section>
+        <div class="right">
+            <button class="btn" id="book_btn">Book Now </button>
+            
+        </div>
+    </section>
+      
+      <footer class="foot">
+        <a href="#">FAQ</a><div class="foot-sep"></div>
+        <a href="#">Contact Us</a><div class="foot-sep"></div>
+        <a href="#">Modify / Cancel Reservation</a><div class="foot-sep"></div>
+        <a href="#">Privacy Policy</a><div class="foot-sep"></div>
+        <a href="#">Customer Service</a>
+      </div>
+
+
+  </body>
+  <script>
+    document.getElementById("book_btn").addEventListener("click", myFunction);
+    
+    function myFunction(){
+            window.location.href="copy.html";
+        }
+</script>
+<script>
+    document.getElementById("din_din").addEventListener("click", myFunction);
+    
+    function myFunction(){
+            window.location.href="dining.html";
+        }
+</script>
+<script>
+    document.getElementById("run_run").addEventListener("click", myFunction);
+    
+    function myFunction(){
+            window.location.href="photos.html";
+        }
+</script>
+<script>
+  document.getElementById("events").addEventListener("click", myFunction);
+   
+   function myFunction(){
+           window.location.href="project3.html";
+       }
+</script>
+<script>
+  document.getElementById("hotels").addEventListener("click", myFunction);
+   
+   function myFunction(){
+           window.location.href="project2.html";
+       }
+       </script>
+       <script>
+   document.getElementById("rooms").addEventListener("click", myFunction);
+    
+    function myFunction(){
+            window.location.href="rooms.html";
+        }
+</script>
+<script>
+   document.getElementById("offers").addEventListener("click", myFunction);
+    
+    function myFunction(){
+            window.location.href="offers.html";
+        }
+</script>
+</html> 
+</script>
+
+
+</html>

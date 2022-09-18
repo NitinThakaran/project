@@ -1,0 +1,531 @@
+// forEach polifill for NodeList
+if (window.NodeList && !NodeList.prototype.forEach) {
+  NodeList.prototype.forEach = Array.prototype.forEach;
+}
+// includes polifill for String
+if (!String.prototype.includes) {
+    String.prototype.includes = function() {
+        'use strict';
+        return String.prototype.indexOf.apply(this, arguments) !== -1;
+    };
+}
+
+window.addEventListener('load', function () {
+  // handle display name in top right of collapse/expand state
+  function handleDisplayName() {
+    if (document.querySelector('#top-right-displayname').getAttribute('data-displayname') !== '' && document.querySelector('#top-right-displayname').getAttribute('data-isfullLogged') === 'false') {
+      if (document.querySelectorAll('.hnav-pull-right.hnav-active').length > 0) {
+        document.querySelector('#top-right-displayname').innerHTML = document.querySelector('#top-right-displayname').getAttribute('data-displayname');
+      } else {
+        document.querySelector('.hnav-pull-right .hnav-item--signin span').innerHTML = document.querySelector('#top-right-displayname').getAttribute('data-collapsedname');
+      }
+    }
+  }
+
+  var siblings = function siblings(element) {
+    var arr = []; // save brother elements
+
+    var prev = element.previousSibling;
+
+    while (prev) {
+      if (prev.nodeType === 1) {
+        arr.unshift(prev);
+      }
+
+      prev = prev.previousSibling;
+    }
+
+    var next = element.nextSibling;
+
+    while (next) {
+      if (next.nodeType === 1) {
+        arr.push(next);
+      }
+
+      next = next.nextSibling;
+    }
+
+    return arr;
+  };
+  // browser can autofill the password, in this case we need to detect manually and enable the submit button
+  function handleAutofillPassword(element) {
+    if (element.classList.contains('hnav-pull-right') && element.classList.contains('hnav-active')) {
+      const signInForm = document.querySelector('div.hnav-signin form[action$="login"]');
+      if (signInForm) {
+          let userName = signInForm.querySelector('input[name="username"]'),
+              lastName = signInForm.querySelector('input[name="last_name"]'),
+              password = signInForm.querySelector('input[name="password"]'),
+              submitBt = signInForm.querySelector('button[type="submit"]');
+          if (!password || password.value.trim() === '') {
+              return;
+          }
+          if (!userName || userName.value.trim() === '') {
+              return;
+          }
+          if (!lastName || lastName.value.trim() === '') {
+              return;
+          }
+          enableSubmitBtnCSS(submitBt);
+      }
+    }
+  }
+
+  document.querySelectorAll('[data-hnav="menu"]').forEach(function (call) {
+    call.addEventListener('click', function (event) {
+      if (document.querySelector('.js-hide-loading-indicator') && document.querySelector('.js-hide-loading-indicator').style.display !== 'none') {
+        event.preventDefault();
+      } else {
+        event.stopPropagation();
+        event.preventDefault();
+        var parentSiblings = siblings(this.parentElement);
+
+        for (var i = 0; i < parentSiblings.length; i++) {
+          parentSiblings[i].classList.remove('hnav-active');
+        }
+
+        if (this.parentElement.getAttribute('class') === 'hnav-pull-left') {
+          document.querySelectorAll('.hnav-pull-right').forEach(function (each) {
+            each.classList.remove('hnav-active');
+          });
+        }
+
+        if (this.parentElement.getAttribute('class') === 'hnav-pull-right') {
+          document.querySelectorAll('.hnav-pull-left').forEach(function (each) {
+            each.classList.remove('hnav-active');
+          });
+        }
+
+        toggleClass(this.parentElement, 'hnav-active');
+        handleDisplayName();
+        handleAutofillPassword(this.parentElement);
+      }
+    });
+  });
+
+  var toggleClass = function toggleClass(element, className) {
+    if (element.classList.contains(className)) {
+      element.classList.remove(className);
+    } else {
+      element.classList.add(className);
+    }
+  };
+
+  document.addEventListener('click', function (event) {
+    var elem = event.target ? event.target : event.toElement,
+        foundActiveClass = getParents(elem, document).length;
+
+    if (foundActiveClass === 0) {
+      document.querySelectorAll('.hnav-pull-right, .hnav-pull-left').forEach(function (e) {
+        e.classList.remove('hnav-active');
+      });
+    }
+
+    handleDisplayName();
+  });
+
+  var getParents = function getParents(el) {
+    var parents = [];
+    var p = el.parentNode;
+
+    while (p !== document) {
+      if (p.getAttribute('class') !== null && p.getAttribute('class').includes('hnav-active')) {
+        parents.unshift(p);
+      }
+
+      p = p.parentNode;
+    }
+
+    return parents;
+  }; // Close active nav on esc
+
+
+  document.addEventListener('keyup', function (event) {
+    if (event.key === 'Escape') {
+      document.querySelectorAll('.hnav-pull-right, .hnav-pull-left').forEach(function (element) {
+        element.classList.remove('hnav-active');
+      });
+    }
+
+    handleDisplayName();
+  });
+  /* Tooltip related code */
+
+  function tooltipScroll() {
+    var scrollVal;
+
+    if (window.innerHeight > 190 && window.innerHeight < 280) {
+      // if ($(window).height() < $('.tooltip').offset().top) {
+      if (window.innerHeight < document.querySelector('.tooltip').offsetTop) {
+        scrollVal = document.querySelector('.tooltip').offsetTop + 50;
+      } else {
+        scrollVal = document.documentElement.scrollTop - document.querySelector('.tooltip').offsetTop + 55; // eslint-disable-line no-mixed-operators
+      }
+    } else {
+      scrollVal = document.documentElement.scrollTop - document.querySelector('.tooltip').offsetTop + 30; // eslint-disable-line no-mixed-operators
+    }
+
+    if (document.querySelector('.tooltip').offsetTop <= document.documentElement.scrollTop && document.documentElement.scrollTop > 245) {
+      document.querySelectorAll('html, body').forEach(function (ele) {
+        animate(ele, {
+          scrollTop: scrollVal
+        }, 500, 0.01, function () {});
+      });
+    }
+  }
+
+  function animate(obj, json, interval, sp, fn) {
+    clearInterval(obj.timer); //var k = 0;
+    //var j = 0;
+
+    function getStyle(obj, arr) {
+      if (obj.currentStyle) {
+        return obj.currentStyle[arr];
+      } else {
+        return document.defaultView.getComputedStyle(obj, null)[arr];
+      }
+    }
+
+    obj.timer = setInterval(function () {
+      //j ++;
+      var flag = true;
+
+      for (var arr in json) {
+        var icur = 0; //k++;
+
+        if (arr === "opacity") {
+          icur = Math.round(parseFloat(getStyle(obj, arr)) * 100);
+        } else {
+          icur = parseInt(getStyle(obj, arr));
+        }
+
+        var speed = (json[arr] - icur) * sp;
+        speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+
+        if (icur !== json[arr]) {
+          flag = false;
+        }
+
+        if (arr === "opacity") {
+          obj.style.filter = "alpha(opacity : '+(icur + speed)+' )";
+          obj.style.opacity = (icur + speed) / 100;
+        } else {
+          obj.style[arr] = icur + speed + "px";
+        }
+      }
+
+      if (flag) {
+        clearInterval(obj.timer);
+
+        if (fn) {
+          fn();
+        }
+      }
+    }, interval);
+  }
+    function closeTooltip(evt) {
+        // const clicked = $(evt.target);
+        var clicked = evt.target;
+        evt.stopPropagation();
+        evt.preventDefault(); // can close by clicking the close icon or the info icon again
+
+        if (clicked.getAttribute('data-js') === 'tooltip-close') {
+            // we clicked the close icon - need to find parent tooltip
+            clicked.closest('[data-js~="tooltip"]').classList.remove('is-open');
+        } else if (clicked.getAttribute('data-js') === 'tooltip-icon') {
+            // we clicked the info icon again, need to find child tooltip
+            document.querySelector('[data-js~="tooltip"]', clicked).classList.remove('is-open');
+        }
+    }
+
+  function closeAllTooltips() {
+    /*
+        When esc is pressed, don't know which one to close, get them all.
+        Also, unlike closing individual tooltip, allow event to propagate.
+    */
+    document.querySelectorAll('[data-js~="tooltip"]').forEach(function (tooltip) {
+      tooltip.classList.remove('is-open');
+    });
+  }
+
+    function openTooltip(evt) {
+        // const clicked = $(evt.target);
+        var clicked = evt.target;
+        evt.stopPropagation();
+        evt.preventDefault();
+        clicked.querySelectorAll('.is-open').forEach(function (e) {
+            e.classList.remove('is-open');
+        });
+        clicked.querySelectorAll('[data-js~="tooltip"]').forEach(function (e) {
+            e.classList.add('is-open');
+        });
+        tooltipScroll();
+    }
+
+  function getCookie(name) {
+    // extract cookie value by regex: from name to first semicolon
+    var pair = document.cookie.match(new RegExp(name + '=([^;]+)')),
+        cookieExists = !!pair; // detect whether cookie exists, double negation to cast it to boolean
+
+    return cookieExists ? pair[1] : null;
+  }
+
+  function hideChaseOfferBySourceCountry() {
+    if (document.querySelectorAll('#hnav-chase-offer').length) {
+      // only if source-country exists and not equals to US we hide the chase placement.
+      if (getCookie('source-country') !== null && getCookie('source-country') !== 'US') {
+        document.querySelector('#hnav-chase-offer').style.display = 'none';
+      }
+    }
+  }
+
+  hideChaseOfferBySourceCountry();
+  document.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+      closeAllTooltips(evt);
+    }
+  });
+  document.querySelectorAll('.m-nav [data-js="tooltip-icon"]').forEach(function (call) {
+      var icon = call; // HCOM-5898 add focus and click event listener to open tooltip
+      icon.addEventListener('focus', openTooltip);
+      icon.addEventListener('blur', closeTooltip); // HCOM-5898 add blur listener to close tooltip
+      icon.addEventListener('click', openTooltip);
+      icon.querySelectorAll('[data-js="tooltip-close"]')
+          .forEach(function (e) {
+              e.addEventListener('click', closeTooltip);
+          });
+  });
+  /* End Tooltip code*/
+
+  function adaptLastNameTipsPosition(fieldObj) {
+    if (fieldObj.getAttribute('name') === 'last name') {
+      var labelObj = fieldObj.parentElement;
+      labelObj.querySelectorAll('.tooltip').forEach(function (obj) {
+        obj.style.bottom = labelObj.height + 15;
+      });
+    }
+  }
+
+  function showErrorByField(fieldObj) {
+    fieldObj.parentElement.classList.add('error-blank');
+    fieldObj.parentElement.querySelectorAll('.message-blank').forEach(function (ele) {
+      ele.classList.add('show');
+    });
+    fieldObj.classList.add('error');
+    adaptLastNameTipsPosition(fieldObj);
+  }
+
+  function hideErrorByField(fieldObj) {
+    fieldObj.parentElement.classList.remove('error-blank');
+    fieldObj.parentElement.querySelectorAll('.message-blank').forEach(function (obj) {
+      obj.classList.remove('show');
+    });
+    fieldObj.classList.remove('error');
+    adaptLastNameTipsPosition(fieldObj);
+  }
+
+  function disableSubmitBtnCSS(submitBt) {
+    submitBt.classList.add('disabled');
+  }
+
+  function enableSubmitBtnCSS(submitBt) {
+    submitBt.classList.remove('disabled');
+  }
+
+  function validateField(fieldObj) {
+    if (!fieldObj || fieldObj.value === undefined || fieldObj.value.trim().length < fieldObj.minLen) {
+      return false;
+    }
+
+    switch (fieldObj.getAttribute('name')) {
+      case 'username':
+        return true;
+
+      case 'last_name':
+        return !/\d/.test(fieldObj.value);
+
+      case 'password':
+        return fieldObj.value.length <= fieldObj.maxLen;
+
+      default:
+        return true;
+    }
+  }
+
+  function getCheckingFieldAction(fieldObj, inputFields, submitBt) {
+    return function () {
+      if (validateField(fieldObj)) {
+        hideErrorByField(fieldObj);
+        var submitBtnEnabled = true; // check other fields to set the submit button bg color.
+
+        inputFields.forEach(function (obj) {
+          if (fieldObj.getAttribute('name') !== obj.getAttribute('name') && !validateField(obj)) {
+            submitBtnEnabled = false;
+            disableSubmitBtnCSS(submitBt);
+          }
+        });
+
+        if (submitBtnEnabled) {
+          enableSubmitBtnCSS(submitBt);
+        }
+      } else {
+        showErrorByField(fieldObj);
+        disableSubmitBtnCSS(submitBt);
+      }
+    };
+  }
+
+  function getCheckingSubmitAction(fieldObj, inputFields, submitBt) {
+    return function (event) {
+      // check validation and css for field (HCOM-6304)
+      if (event.keyCode === 8 || event.key === 'Backspace') {
+        if (!validateField(fieldObj)) {
+          showErrorByField(fieldObj);
+        }
+      } else {
+        if (validateField(fieldObj)) {
+          hideErrorByField(fieldObj);
+        }
+      } // check validation and css for submit button.
+
+      var submitBtnEnabled = true;
+      inputFields.forEach(function (obj) {
+        if (!validateField(obj)) {
+          submitBtnEnabled = false;
+        }
+      });
+
+      if (submitBtnEnabled) {
+        enableSubmitBtnCSS(submitBt);
+      } else {
+        disableSubmitBtnCSS(submitBt);
+      }
+    };
+  }
+
+    function setCookie(cookieName, cookieVal) {
+        let date = new Date();
+        date.setFullYear(date.getFullYear() + 1000);
+        document.cookie = cookieName + '=' + cookieVal + ';expires=' + date.toGMTString();
+    }
+
+    function updateCookies(remembMe) {
+        setCookie(remembMe.cookieName, remembMe.checked);
+    }
+
+  function initRememberMeCookie(remembMe) {
+    if (getCookie(remembMe.cookieName) === "true") {
+      remembMe.checked = true;
+    } else {
+      remembMe.checked = false;
+    }
+  }
+
+  function signInErrorHandling() {
+    // const signinForm = $('div.hnav-signin form[action$="login"]'),
+    let signinForm = document.querySelector('div.hnav-signin form[action$="login"]');
+
+    if (signinForm) {
+      const remembMe = signinForm.querySelector('input[name*="remember"]'),
+          userName = signinForm.querySelector('input[name="username"]'),
+          lastName = signinForm.querySelector('input[name="last_name"]'),
+          password = signinForm.querySelector('input[name="password"]'),
+          submitBt = signinForm.querySelector('button[type="submit"]'),
+          inputFields = [userName, lastName, password];
+      if (userName !== null) {
+        userName.minLen = 1;
+      }
+
+      if (password !== null) {
+        password.minLen = 1;
+        password.maxLen = 35;
+      }
+
+      if (remembMe !== null) {
+        remembMe.cookieName = '_SLS_remembMe';
+      }
+
+      if (lastName !== null) {
+        lastName.minLen = 1;
+        disableSubmitBtnCSS(submitBt);
+        initRememberMeCookie(remembMe);
+        submitBt.addEventListener('click', function (e) {
+          e.preventDefault();
+          var isFieldValid = true;
+          inputFields.forEach(function (fieldObj) {
+            if (!validateField(fieldObj)) {
+              showErrorByField(fieldObj);
+              isFieldValid = false;
+            }
+          });
+
+          if (isFieldValid) {
+              updateCookies(remembMe);
+            signinForm.submit();
+          } else {
+            disableSubmitBtnCSS(submitBt);
+          }
+        }); // add blur events.
+
+        inputFields.forEach(function (fieldObj) {
+          fieldObj.addEventListener('blur', getCheckingFieldAction(fieldObj, inputFields, submitBt));
+          fieldObj.addEventListener('keyup', getCheckingSubmitAction(fieldObj, inputFields, submitBt));
+          fieldObj.addEventListener('change', getCheckingFieldAction(fieldObj, inputFields, submitBt));
+        });
+      }
+    }
+  }
+
+  signInErrorHandling();
+
+   // HCOM-5900 constrain focus in dialog, TAB switch sequence will be loop when dialog show up
+  document.querySelectorAll('.hnav-menu').forEach(function (menu) {
+    var modal = menu; // modal.find(":last").keydown(function (e) {
+
+    findlast(modal).addEventListener('keydown', function (e) {
+      var event = window.event ? window.event : e;
+      var keyCode = event.which ? event.which : event.keyCode;
+
+      if (keyCode === 9) {
+        // var focus = $(modal).find("input:visible:first");
+        var focus;
+        modal.querySelectorAll('input').forEach(function (ipt) {
+          if (!focus && ipt.type !== 'hidden') {
+            focus = ipt;
+          }
+        });
+
+        if (!focus) {
+          // focus = $(modal).find("a:first");
+          focus = modal.querySelector('a');
+        }
+
+        focus.focus();
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    });
+  });
+
+  function findlast(el) {
+    var lastnode = el;
+
+    while (lastnode.hasChildNodes() && lastnode.lastElementChild !== null) {
+      lastnode = lastnode.lastElementChild;
+    }
+
+    return lastnode;
+  }
+
+  if (document.querySelector('#hnav-skip a')) {
+    document.querySelector('#hnav-skip a').addEventListener('click', function () {
+      var skipHref = 'hnav-skip-link';
+      var mainContent = document.querySelector('#main-content');
+
+      if (mainContent.length > 0) {
+        skipHref = 'main-content';
+      }
+
+      document.location.hash = skipHref;
+    });
+  }
+}, false);

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Gate</title>
+</head>
+<link rel="stylesheet" href="style.css">
+
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+<style>
+
+    #navbar{
+        position: fixed;
+        display: flex;
+        align-items: center;
+        background-color: gray;
+        width: 100%;
+        top:0;
+        z-index: 100;
+        
+    }
+    #logo{
+        margin: 17px 20px;
+        
+    }
+    #logo img{
+        width: 104px;
+        height: 104px;
+    }
+   
+    #navbar ul{
+        display: flex;
+       
+        
+    }
+    
+      
+
+     #navbar ul li{
+         list-style: none;
+         font-size: 0.9rem;
+         
+
+         
+     }
+     
+     #navbar ul li a{
+         color: white ; 
+         display: block;
+         padding: 5px 10px;
+         border-radius: 20px;
+         text-decoration: none;
+     }
+     #navbar ul li a:hover,#navbar ul li a:visited{
+         color:whitesmoke;
+         background-color: black;
+         text-decoration: underline;
+     }
+     .top{
+         margin-top: 140px;
+     }
+
+     #home{
+         background: url("image/grand-hyatt-goa\ 1.jpg"); 
+         background-size: 100% 600px;
+         height: 600px;
+         width: 100%;
+         background-repeat: no-repeat; 
+       
+
+         
+     }
+     #home div p{
+         color: whitesmoke;
+         text-align: center;
+         font-size: 60px;
+         transform: translateY(200px);
+
+     }
+      #home div h1{
+          color: whitesmoke;
+         text-align: center;
+         font-size: 70px;
+         transform: translateY(220px);
+     }
+     #safety{
+         display: flex;
+         flex-direction: column;
+         background-image: url(image/s1.webp);
+         background-repeat: no-repeat;
+         background-size: 600px 200px;
+         height: 200px;
+         
+     }
+
+     #safety h1{
+         color: whitesmoke;
+         text-align: left;
+         
+     }
+     #safety p{
+         color: whitesmoke;
+         text-align: left;
+     }
+     #line{
+         width: 10%;
+         height: 15%;
+         margin-left: 1%;
+     }
+     #ROOMs{
+         width: 100%;
+         margin: auto;
+     }
+     #ROOMS h1{
+         text-align: center;
+         color:red;
+         font-size: 2rem;
+
+     }
+#ROOMS p{
+    float: right;
+}
+
+#hotel h1{
+    text-align: center;
+         color:red;
+         font-size: 2rem;
+    
+}
+.sun{
+    padding: 5px 10px;
+    
+}
+#hotel h3{
+    margin-right: 140px;
+    text-align: right;
+    font-size: 1.2rem;
+}
+#hotel p{
+    float: right;
+}
+#hotel h4{
+    font-size: 1.2rem;
+}
+#hotel h5{
+    margin-right: 140px;
+    text-align: right;
+    font-size: 1.2rem;
+}
+#din{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column ;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    background-color:#f6f6f6;
+}
+#din h2{
+    text-align: center;
+         color:red;
+         font-size: 2rem;
+
+}
+
+.claw{
+    row-count: 2;
+}
+
+#run{
+    margin-top: 50px;
+    background-color: #f6f6f6;
+}
+
+#run h1{
+    text-align: center;
+    color: red;
+    font-size: 2rem;
+}
+.box{
+    margin-top: 20px;
+}
+.out{
+    font-weight:lighter;
+    font-size: 1.2rem;
+    color: black;
+    text-align: center;
+    margin: auto;
+    padding-top: 20px;
+}
+
+#events h1{
+    text-align: center;
+    color: red;
+    font-size: 2rem;
+}
+.special h2{
+    text-align: left;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.special p{
+    font-size: 1.2rem;
+    font-weight: lighter;
+
+}
+
+.right {
+    position: fixed;
+        right: 45px;
+         top: 50px;
+        display: inline-block;
+        z-index: 100;
+        
+    }
+    .btn {
+        font-family:Arial, Helvetica, sans-serif;
+        margin: 0px 9px;
+        background-color:white;
+        color: red;
+        padding: 4px 14px;
+        border: 2px solid black ;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+footer {
+    background-color:black;
+    overflow: hidden;
+    width: 100%;
+}
+
+.foot{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.foot-sep{
+    height:30px;
+    width: 2px;
+    background-color: gray;
+    margin-top: 13px;
+    /* margin-left: 20px;
+    margin-right: 20px; */
+}
+
+footer a {
+    
+    text-decoration: none;
+    padding: 20px;
+    text-align: center;
+    float: left;
+    color: gray;
+
+}
+footer a:hover {
+    
+    text-decoration: underline;
+    color:whitesmoke;
+
+}
+
+.center{
+    margin: auto;
+    top: 50%;
+    text-align: center;
+}
+
+.center h2{
+    color: darkolivegreen;
+    margin-right: 140px;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: auto;
+}
+
+.subsection{
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.room-text{
+    text-align: center;
+    width: 400px;
+    margin: auto;
+    vertical-align: middle;
+    font-size: 1.2rem;
+    font-weight: 600px;
+    padding-top: 20px;
+}
+
+#air{
+     text-align: center;
+    transform: translateY(-20%);
+}
+
+.img-row-25{
+    display: flex;
+    justify-content: center;
+}
+.img-row-25 img{
+    width: 22vw;
+}
+
+.img-row-50{
+    display: flex;
+    justify-content: center;
+}
+.img-row-50 img{
+    width: 44vw;
+}
+
+.full-width-img{
+    margin: auto;
+    width: 100%;
+}
+
+.card-right{
+    background-color:#f6f6f6;
+    transform: translateX(-40%);
+    height: 300px;
+    padding-top: 20px;
+}
+
+.card-left{
+    background: #f6f6f6;
+    transform: translateX(40%);
+    height: 300px;
+    padding-top: 20px;
+}
+
+</style>
+<body>
+
+    <df-messenger
+  intent="WELCOME"
+  chat-title="Radison"
+  agent-id="bf731b9e-ea3b-4580-bcd1-942e7f238244"
+  language-code="en"
+></df-messenger>
+    <nav id="navbar">
+        <div id="logo">
+            <img src="image/watergate.png" alt="">
+        </div>
+        <ul>
+            <li><a href="#hotel"> HOTEL </a></li>
+            <li><a href="#ROOMS" id="rooms"> ROOMS </a></li>
+            <li><a href="#din" id="din_din"> DINING </a></li>
+            <li><a href="#events" id="events"> SPECIAL EVENTS </a></li>
+            <li><a href="#run" id="run_run"> PHOTOS + REVIEWS </a></li>
+            <li><a href="" id="offers"> OFFERS</a></li>
+        </ul>
+    </nav>
+<div class="top">
+            <section id="home">
+                <div class="center">    
+                    <p>Welcome to</p>
+                    <h1>Water Gate GOA</h1>
+                </div>
+            </section>
+            <br>
+            <section id="safety">
+               <h1>
+                Safety First, Wellbeing
+                <br>
+                 Always
+               </h1>
+               <hr id="line"> 
+               <p>
+                 Guided by our purpose of care, we’re committed to
+                 <br>
+               enhanced levels of cleanliness in an effort to ensure
+               <br>
+                your safety and wellbeing 
+               </p>
+                
+            </section>
+            <section id="ROOMS">
+                <h1>
+                     Rooms + Suits
+                </h1>
+                <div class="center">
+                    <img class="full-width-img" src="image/suitess.webp" alt="" height="500px"> 
+                </div>
+                <div class="subsection">
+                    <img src="image/room2.webp" alt="" height="400px" width="700px">
+                    <p class="room-text center">
+                        Welcome to this award winning luxury destination resort overlooking the calm waters of Bambolim Bay.
+                        We encourage you to unwind in our splendidly appointed rooms and suites; and take your pick from a collection of over 101 experiences offered at our resort.
+                        
+                    </p>
+                </div>
+                <div id="air">
+                    <img src="image/room 3.webp" alt="" height="400px" width="650px"  >  
+                </div>
+                
+            </section>
+            
+            <section id="hotel">
+    
+                <h1 > Our Hotel </h1>
+                <br>
+                <div class="sun subsection">
+                    <img src="image/nature1.webp" alt="" height="450px" width="850px">
+                <div class="center card-right">
+                    <h2>
+                        Adventure Park 
+                    </h2>
+                        <p class="room-text">
+                        Go on an adrenaline rush with our adventure package that
+                        includes zip line, wall climbing, rope course, sky cycle and 
+                        more, starting at INR1350
+                    </p>
+                </div>
+                </div>
+
+                <div class="star subsection">
+                    <div class="center card-left">
+                        <h2>
+                            Swimming pool
+                        </h2>
+                        <p class="room-text">
+                            Experience the grandness in unmatched style and luxury 
+                            with the outdoor pool that features leisure pool facilities and
+                            a kids' pool facing Bambolim Bay.
+                            The 25-metre indoor lap pool provides a complete lifestyle
+                            experience. The separate steam and sauna facilities adjacent
+                            to the whirlpools ensure rejuvenation in a style that is grand
+                            and all-inclusive
+                        </p>
+                    </div>
+                    <img src="image/swim.webp" alt="" height="450px" width="850px">
+                </div>
+                <div class="stereo subsection">
+                    <img src="image/aqua.webp" alt=""  height="400px" width="850px">
+                    <div class="center card-right">
+                        <h2>
+                            Aquasil sailing Centre
+                        </h2>
+                        <p class="room-text">
+                            A great experience awaits you with a top of the line fleet and
+                        certified instructors allowing individual and groups to achieve
+                        the best in sailing 
+                        </p>
+                    </div>
+                </div>
+                <div class="subsection">
+                    <div class="center card-left">
+                        <h2>
+                            Big Daddy Casino
+                        </h2>
+                        <p class="room-text">
+                            Casino Strike by Big Daddy offers a world-class gaming
+                            experience, through a variety of international games
+                            including Baccarat, Andar Bahar, BlackJack, Mini Flush,
+                            Roulette, Casino War and Slots, with the latest gaming
+                            equipment.
+                        </p>
+                    </div>
+                    <img src="image/casino.webp" alt=""height="400px" width="850px">
+                </div>
+            </section>
+                <section id="din">
+                    <div class="claw">
+                        <div class="img-row-50">
+                            <img src="image/dining.webp" alt="">
+                            <img src="image/dining2.webp" alt="">
+                        </div>
+                        <div class="img-row-25">
+                            <img src="https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2014/09/21/1726/GOAGH-P102-Chulha.jpg/GOAGH-P102-Chulha.16x9.jpg?imwidth=1280" alt="">
+                            <img src="https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2015/04/24/1508/Grand-Hyatt-Goa-P289-Capiz-Bar.jpg/Grand-Hyatt-Goa-P289-Capiz-Bar.16x9.jpg?imwidth=1280" alt="">
+                            <img src="https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2015/04/27/0836/Grand-Hyatt-Goa-P313-The-Verandah.jpg/Grand-Hyatt-Goa-P313-The-Verandah.16x9.jpg?imwidth=1280" alt="">
+                            <img src="https://assets.hyatt.com/content/dam/hyatt/hyattdam/images/2015/04/24/1508/Grand-Hyatt-Goa-P286-Bay-View-Lounge.jpg/Grand-Hyatt-Goa-P286-Bay-View-Lounge.4x3.jpg?imwidth=1280" alt="">
+                        </div>
+                        <br><br><br>
+                        <div class="center">
+                            <h2>
+                                Dining
+                            </h2>
+                            <p class="room-text">
+                                With a selection of seven restaurants and bars, you can savour the traditional Indian flavours at Chulha, five world cuisines at The Dining Room or the finest in Italian at The Verandah. Experience the unique ambience of the popular Capiz Bar or Pool Bar and Grill. Catch up for a quick bite and coffee at Bay View Lounge or Confeitaria.
+                            </p>
+                        </div>
+                    </div>
+            </section>
+            <br>
+            <br>
+            <br>
+            <section id="run">
+                <h1>
+                    PHOTOS + REVIEWS
+                </h1>
+                <div class="img-row-25 box">
+                    <img src="image/rev.webp" alt=""  >
+                    <img src="image/rev2.webp" alt="">
+                    <img src="image/rev3.webp" alt="">
+                    <img src="image/rev4.webp" alt="">
+                </div>
+                <br>
+                <div class="out">
+                    Excellent property They upgraded us to Poolside view room, very large and  <br> spacious. Sprawling property. Buggies to transport you around. Excellent <br> Hospitality Genial and helpful staffLoved the food (cannot go wrong with <br> Hyatt!!)Lots of activities (you need to check with resort centre)Amazing SpaBeach <br> since we went in monsoon, not accessible, cannot say about other seasons.
+                </div>
+                <br>
+                <div class="img-row-25 box">
+                    <img src="image/v1.webp" alt=""  >
+                    <img src="image/v2.webp" alt="">
+                    <img src="image/v3.webp" alt="">
+                    <img src="image/v4.webp" alt="">
+                </div>
+                
+
+
+            </section>
+            <section id="events">
+                <h1>
+                    SPECIAL EVENTS
+                </h1>
+                <div class="special subsection">
+                    <div class="center">
+                    <h2> Grand wedding </h2>
+                  <p class="room-text">
+                    We offer some of the most unique wedding settings in Goa. Whichever way you look at it, the Grand Hyatt Goa spellsromance, whether it’s within the precincts of the majestic  17th century Indo-Portuguese palace or on the waterfront.  Celebrate your love with the ultimate romantic beach  wedding. Sip champagne as the sun sets over the sparkling  ocean. And, after the rites of passage, slip away with your  beloved for some barefoot-on-the sands time together 
+                  </p>
+                    </div>
+                  <img src="image/wed.webp" alt="" height="350px" width="650px" style="margin-bottom: 5px;"  >  
+                    
+                </div>
+
+            </section>
+            <section>
+                <div class="right">
+                    <button class="btn" id="book_btn">Book Now </button>
+                    
+                </div>
+            </section>
+            <footer class="foot">
+                <a href="#">FAQ</a><div class="foot-sep"></div>
+                <a href="#">Contact Us</a><div class="foot-sep"></div>
+                <a href="#">Modify / Cancel Reservation</a><div class="foot-sep"></div>
+                <a href="#">Privacy Policy</a><div class="foot-sep"></div>
+                <a href="#">Customer Service</a>
+                
+            </footer>
+            </div>
+</body>
+<script>
+    document.getElementById("book_btn").addEventListener("click", myFunction);
+    
+    function myFunction(){
+            window.location.href="copy.html";
+        }
+</script>
+<script>
+    document.getElementById("din_din").addEventListener("click", myFunction);
+    
+    function myFunction(){
+            window.location.href="dining.html";
+        }
+</script>
+<script>
+    document.getElementById("run_run").addEventListener("click", myFunction);
+    
+    function myFunction(){
+            window.location.href="photos.html";
+        }
+</script>
+<script>
+   document.getElementById("events").addEventListener("click", myFunction);
+    
+    function myFunction(){
+            window.location.href="project3.html";
+        }
+</script>
+<script>
+   document.getElementById("rooms").addEventListener("click", myFunction);
+    
+    function myFunction(){
+            window.location.href="rooms.html";
+        }
+</script>
+<script>
+   document.getElementById("offers").addEventListener("click", myFunction);
+    
+    function myFunction(){
+            window.location.href="offers.html";
+        }
+</script>
+</html> 

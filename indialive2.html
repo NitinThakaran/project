@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    table, th, td {
+    border: 1px solid black;
+    color: white;
+  }
+  
+  table {
+    width: 100%;
+  }
+  body{
+    background-image: url("image/mg.jpg");
+     margin-top: 60px;
+    background-size: 100%;
+  }
+</style>
+
+<body>
+
+     <div class="container">
+         <table class="table">
+             <thead class="thead">
+                 <th>State</th>
+                 <th>Active</th>
+                 <th>confirmed</th>
+                 <th>Recoverd</th>
+                 <th>Deaths</th>
+                 <th>Lastupdated time</th>
+             </thead>
+             <tbody id="table_data"></tbody>
+         </table>
+     </div>
+    </body>
+    <script>
+        const getCovidData=async ()=>{
+   const res= await fetch("https://api.covid19india.org/data.json");
+    const actualData=await res.json();
+    console.log(actualData.statewise);
+    const data=actualData.statewise;
+    if(data.length>0){
+        var temp="";
+
+        data.forEach((element) => {
+            temp+="<tr>";
+            temp+="<td>"+element.state+"</td>";
+            temp+="<td>"+element.active+"</td>";
+            temp+="<td>"+element.confirmed+"</td>"
+            temp+="<td>"+element.recovered+"</td>";
+            temp+="<td>"+element.deaths+"</td>";
+            temp+="<td>"+element.lastupdatedtime+"</td></tr>";
+        });
+        document.getElementById("table_data").innerHTML=temp;
+
+    }
+}
+
+getCovidData();
+
+    </script>
+     
+</html>
